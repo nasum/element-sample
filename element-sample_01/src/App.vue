@@ -2,79 +2,53 @@
   <div id="app">
     <el-row>
       <el-col>
-        <el-input :type="text" placeholder="Please input" v-model="input" :tabindex="0" >
-          <span slot="prefix">prefix</span>
-          <span slot="suffix">suffix</span>
-          <span slot="prepend">prepend</span>
-          <span slot="append">append</span>
-        </el-input>
+        <el-input-number v-model="num" :min="1" :max="100" :precision="2" size="large"></el-input-number>
+        <el-input-number v-model="num" :min="1" :max="100" :precision="2" size="medium"></el-input-number>
+        <el-input-number v-model="num" :min="1" :max="100" :precision="2" size="small"></el-input-number>
+        <el-input-number v-model="num" :min="1" :max="100" :precision="2" size="mini"></el-input-number>
       </el-col>
     </el-row>
     <el-row>
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-      <el-col :span="6"><div class="content">hoge</div></el-col>
+      <el-col>
+        <el-input-number v-model="num" :min="1" :max="100" :precision="2" size="large" :controls="true"></el-input-number>
+        <el-input-number v-model="num" :min="1" :max="100" :precision="2" size="medium" :controls="false"></el-input-number>
+      </el-col>
     </el-row>
     <el-row>
-      <el-col :span="12"><div class="content">hoge</div></el-col>
-      <el-col :span="12"><div class="content">hoge</div></el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :span="16"><div class="content">hoge</div></el-col>
-      <el-col :span="8"><div class="content">hoge</div></el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :span="4"><div class="content">hoge</div></el-col>
-      <el-col :span="8"><div class="content">hoge</div></el-col>
-      <el-col :span="4"><div class="content">hoge</div></el-col>
-      <el-col :span="4"><div class="content">hoge</div></el-col>
-      <el-col :span="4"><div class="content">hoge</div></el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-      <el-col :span="6" :offset="6"><div class="content">hoge</div></el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :span="2" :offset="4"><div class="content">hoge</div></el-col>
-      <el-col :span="6" :offset="6"><div class="content">hoge</div></el-col>
-    </el-row>
-    <el-row type="flex">
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-    </el-row>
-    <el-row type="flex" justify="center">
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-    </el-row>
-    <el-row type="flex" justify="end">
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-    </el-row>
-    <el-row type="flex" justify="space-between">
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-    </el-row>
-    <el-row type="flex" justify="space-around">
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-      <el-col :span="6"><div class="content">hoge</div></el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1"><div class="content">hoge</div></el-col>
-      <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11"><div class="content">hoge</div></el-col>
-      <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11"><div class="content">hoge</div></el-col>
-      <el-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1"><div class="content">hoge</div></el-col>
+      <el-col>
+        <el-select v-model="valueArray" placeholder="Select" size="large" :clearable="true" :multiple="true" :collapse-tags="true" filterable allow-create>
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
+        <el-select v-model="value" placeholder="Select" size="medium" :filterable="true">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
+        <el-select v-model="value" placeholder="Select" size="small">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
+        <el-select v-model="value" placeholder="Select" size="mini">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -84,9 +58,27 @@ export default {
   name: 'layout',
   data() {
     return {
-      inpit: ''
+      num: 0,
+      options: [{
+        value: 'Option1',
+        label: 'Option1'
+      }, {
+        value: 'Option2',
+        label: 'Option2'
+      }, {
+        value: 'Option3',
+        label: 'Option3'
+      }, {
+        value: 'Option4',
+        label: 'Option4'
+      }, {
+        value: 'Option5',
+        label: 'Option5'
+      }],
+      value: '',
+      valueArray: []
     }
-  }
+  },
 }
 </script>
 
