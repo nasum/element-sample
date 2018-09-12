@@ -1,6 +1,16 @@
 <template>
   <div id="app">
     <el-row>
+      <el-col>
+        <el-input :type="text" placeholder="Please input" v-model="input" :tabindex="0" >
+          <span slot="prefix">prefix</span>
+          <span slot="suffix">suffix</span>
+          <span slot="prepend">prepend</span>
+          <span slot="append">append</span>
+        </el-input>
+      </el-col>
+    </el-row>
+    <el-row>
       <el-col :span="6"><div class="content">hoge</div></el-col>
       <el-col :span="6"><div class="content">hoge</div></el-col>
       <el-col :span="6"><div class="content">hoge</div></el-col>
@@ -72,6 +82,11 @@
 <script>
 export default {
   name: 'layout',
+  data() {
+    return {
+      inpit: ''
+    }
+  }
 }
 </script>
 
